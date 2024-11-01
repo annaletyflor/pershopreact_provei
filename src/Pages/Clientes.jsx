@@ -1,6 +1,8 @@
-import React, { useState } from 'react';
-import { Form, Button, Container, Row, Col } from 'react-bootstrap';
-import api from '../Services/api,js';
+  import React, { useState } from 'react';
+  import { Form, Button, Container, Row, Col } from 'react-bootstrap';
+  import api from '../Services/api.js';
+  import 'bootstrap/dist/css/bootstrap.min.css';
+  import './Clientes.css'
 
 const Clientes = () => {
   const [formData, setFormData] = useState({
@@ -58,7 +60,7 @@ const Clientes = () => {
             </Form.Group>
           </Col>
         </Row>
-
+  
         <Row className="mb-3">
           <Col md={6}>
             <Form.Group controlId="formEmail">
@@ -87,13 +89,45 @@ const Clientes = () => {
             </Form.Group>
           </Col>
         </Row>
-
+  
+        {/* Novo campo para Endereço */}
+        <Row className="mb-3">
+          <Col md={12}>
+            <Form.Group controlId="formEndereco">
+              <Form.Label>Endereço</Form.Label>
+              <Form.Control
+                type="text"
+                name="endereco"
+                placeholder="Digite o endereço"
+                value={formData.endereco}
+                onChange={handleChange}
+                required
+              />
+            </Form.Group>
+          </Col>
+        </Row>
+  
+        {/* Novo campo para Verificado */}
+        <Row className="mb-3">
+          <Col md={12}>
+            <Form.Group controlId="formVerificado" className="mb-3">
+              <Form.Check
+                type="checkbox"
+                name="verificado"
+                label="Verificado"
+                checked={formData.verificado}
+                onChange={(e) => handleChange({ target: { name: 'verificado', value: e.target.checked } })}
+              />
+            </Form.Group>
+          </Col>
+        </Row>
+  
         <Button variant="primary" type="submit">
           Cadastrar
         </Button>
       </Form>
     </Container>
   );
-};
-
-export default Clientes;
+  };
+  
+  export default Clientes;
